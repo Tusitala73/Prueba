@@ -18,5 +18,4 @@ else:
     print("Error - Argumentos incorrectos")
     print("Ejemplo: tabla.py [1-9] [1-9]")
 
-#prueba de modificado
 
