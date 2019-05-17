@@ -1,17 +1,18 @@
-
-def suma(x,y):
+def suma(x, y):
     r = x + y
-    return r  
+    return r
 
-def resta(x,y):
+
+def resta(x, y):
     r = x - y
-    return r    
+    return r
 
-def producto(x,y):
+
+def producto(x, y):
     r = x * y
-    return r  
+    return r
 
 
-def division(x,y):
+def division(x, y):
     r = x / y
-    return r  
+    return r
