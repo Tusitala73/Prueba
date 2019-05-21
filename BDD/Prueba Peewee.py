@@ -1,7 +1,7 @@
 from peewee import *
 import datetime
 
-db = SqliteDatabase('Usuarios.db')
+db = SqliteDatabase('Tabla_peewee.db')
 
 class Usuario(Model):
     Nombre = CharField(unique=True, max_length=50, index=True)
@@ -14,15 +14,21 @@ class Usuario(Model):
         database = db
         db_table = 'usuarios'
 
-if __name__ == "__main__":  
+
+#class añadir():
+#    us = Usuario()
+#    us.Nombre = 'Jose'      
+#    us.Contraseña = '1234'
+#    us.Correo = 'jose@gmail.com'
+#    us.save()
+    
+
+
+if __name__ == "__main__":
     
     Usuario.create_table
 
-    us = Usuario()
-    us.Nombre = 'Jose'      
-    us.Contraseña = '1234'
-    us.Correo = 'jose@gmail.com'
-    us.save()
+    
 
        
     
