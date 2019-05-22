@@ -15,19 +15,18 @@ class Usuario(Model):
         db_table = 'usuarios'
 
 
-#class añadir():
-#    us = Usuario()
-#    us.Nombre = 'Jose'      
-#    us.Contraseña = '1234'
-#    us.Correo = 'jose@gmail.com'
-#    us.save()
     
 
 
 if __name__ == "__main__":
-    
-    Usuario.create_table
+    if not Usuario.table_exists():
+        Usuario.create_table()
 
+    us = Usuario()
+    us.Nombre = 'jose 2'      
+    us.Contraseña = '1234'
+    us.Correo = 'jose@gmail.com'
+    us.save()
     
 
        
