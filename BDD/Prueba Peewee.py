@@ -19,22 +19,9 @@ class Usuario(Model):
     
 
 
-if __name__ == "__main__":
-    userbuscado = Usuario.get(Usuario.id == 5) #metodo de busqueda
-    print(userbuscado)
-
-    userbuscado.Activo = False.Nombre = 'lolo' #metodo para modificar un registro
-    userbuscado.save()
-
-
-  #if not Usuario.table_exists():
-    #   Usuario.create_table()
-'''
-        ---- METODOS PARA AGREGAR REGISTROS A LA TABLA ----
-
-1º metodo para añadir datos a la talba 
- creamos una instancia del objeto 'user' referenciando a la clase 'Usuario'
- para que poder grabrar los datos usamos el metodo "save"
+def agregar_1():
+    if not Usuario.table_exists():
+        Usuario.create_table()
 
     user = Usuario()
     user.Nombre = 'jose'      
@@ -42,28 +29,51 @@ if __name__ == "__main__":
     user.Correo = 'jose@gmail.com'
     user.save()
     
-2ª aqui hacemos exatamete lo mismo pero le pasamos directamente los valores en el constructor
-   
-    user = Usuario(Nombre='Paco', Contraseña='1456', Correo='pp@gmail') 
-    user.save()
+   #1º metodo para añadir datos a la talba 
+   #creamos una instancia del objeto 'user' referenciando a la clase 'Usuario'
+   #para que poder grabrar los datos usamos el metodo "save"
 
-3º ahora le vamos a pasar los valores a peewee atraves de un diccionario
+def agregar_2():
+    if not Usuario.table_exists():
+        Usuario.create_table()
+   
+    user = Usuario()
+    user.save()
+    user = Usuario(Nombre='Paco', Contraseña='1456', Correo='pp@gmail') 
+
+    #2ª aqui hacemos exatamete lo mismo pero le pasamos directamente los valores en el constructor
+
+def agregar_3():
+    if not Usuario.table_exists():
+        Usuario.create_table()
     
     user = {'Nombre':'Juan', 'Contraseña':'789'} #creamos el dicionario
     user = Usuario(**user) #le pasamos a la clase el diccionario como parametro
     user.save()
 
-4º Usamos un metododo de clase 'Create' para crear nuevos registros
+#3º ahora le vamos a pasar los valores a peewee atraves de un diccionario
+
+def agregar_4():
+    if not Usuario.table_exists():
+        Usuario.create_table()
 
     user = Usuario.create(Nombre = 'Antonio', Contraseña = '4566', Correo = ' antonio@gmail.com')
 
-5 ºUsando el metodo de clase 'Insert' necesita parta salvasrse el metodo 'execute'
+#4º Usamos un metododo de clase 'Create' para crear nuevos registros
+
+def agregar_5():
+    if not Usuario.table_exists():
+        Usuario.create_table()
+
 
     user = Usuario.insert(Nombre = 'Perico', Contraseña = '4566', Correo = ' antonio@gmail.com')
     user.execute()
-'''
 
-'''         ---METODOS PARA EDITAR Y ELIMINAR REGISTROS---'''
+#5 ºUsando el metodo de clase 'Insert' necesita parta salvasrse el metodo 'execute'
 
+def buscar_modificar():
+    userbuscado = Usuario.get(Usuario.id == 5) #metodo de busqueda
+    print(userbuscado)
 
- 
+    userbuscado.Activo = False #metodo para modificar un registro
+    userbuscado.save()
