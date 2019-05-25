@@ -17,7 +17,7 @@ class Usuario(Model):
         return self.Nombre
 
     
-
+#        --------------METODOS PARA AGREGAR REGUISTROS------------                        
 
 def agregar_1():
     if not Usuario.table_exists():
@@ -71,9 +71,25 @@ def agregar_5():
 
 #5 ºUsando el metodo de clase 'Insert' necesita parta salvasrse el metodo 'execute'
 
+#               --------------METODOS PARA BUSCAR Y MODIFICAR  REGISTROS------------
+
 def buscar_modificar():
     userbuscado = Usuario.get(Usuario.id == 5) #metodo de busqueda
     print(userbuscado)
 
-    userbuscado.Activo = False #metodo para modificar un registro
+    userbuscado.Activo = False #metodo para modificar un registro, si el atributo no existe lo crea y si exite lo modifica
     userbuscado.save()
+
+def modificar2():
+    registro_modificar = Usuario.update(Nombre='Toño', Contraseña='55621').where(Usuario.id == 2) # de esta forma prodiramos actualizar varios valores a la vez
+    registro_modificar.execute()
+
+#               ------------METODOS PARA BORRAR REGISTROS---------
+
+def borrar1():
+    Usuario.delete_instance() # esta forma de borrar borra el resitro atraves de la instancia crada al realizar una busqueda
+       
+def borrar2():
+    registro_borrar =Usuario.delete().where(Usuario.id == 2)
+    registro_borrar.execute()
+    

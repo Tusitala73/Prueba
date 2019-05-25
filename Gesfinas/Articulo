@@ -1,0 +1,76 @@
+Option Compare Database
+
+'variables necesarias para el cálculo de estadísticas sobre el cultivo
+Private kgBrutos As Long
+Private kgNetos As Long
+Private totalVentas As Currency
+Private totalGastos As Currency
+Private totalBeneficio As Currency
+Private superficie As Long
+
+Private Sub cmdVerTrabajosCerrados_Click()
+  If Not IsNull(Me.idCultivo) Then
+    DoCmd.OpenForm "Q_TrabajosPendientes", , "Q_TrabajosPendientesQdeCultivo"
+  End If
+End Sub
+
+Private Sub Form_Current()
+  If Not (IsNull(Me.idCultivo)) Then
+  'Mostrar estadísticas del cultivo
+    'se obtienen los datos necesarios
+    ModuloConsultasElementos.EstadisticasTodoCultivo Me.idCultivo, _
+        kgBrutos, kgNetos, totalVentas, totalGastos
+    totalBeneficio = totalVentas - totalGastos
+    superficie = ModuloConsultasElementos.SuperficieCultivo(Me.idCultivo)
+    'se calculan los campos
+    Me.txtKgBrutos = kgBrutos
+    Me.txtKgNetos = kgNetos
+    Me.txtGasto = totalGastos
+    Me.txtVentas = totalVentas
+    Me.txtBeneficio = totalBeneficio
+    If Me.n_plantas <> 0 Then
+      Me.txtKgBrutosXPlanta = CDbl(kgBrutos) / CDbl(Me.n_plantas)
+      Me.txtKgNetosXPlanta = CDbl(kgNetos) / CDbl(Me.n_plantas)
+      Me.txtGastoXPlanta = CDbl(totalGastos) / CDbl(Me.n_plantas)
+      Me.txtVentasXPlanta = CDbl(totalVentas) / CDbl(Me.n_plantas)
+      Me.txtBeneficioXPlanta = CDbl(totalBeneficio) / CDbl(Me.n_plantas)
+    Else
+      Me.txtKgBrutosXPlanta = 0
+      Me.txtKgNetosXPlanta = 0
+      Me.txtGastoXPlanta = 0
+      Me.txtVentasXPlanta = 0
+      Me.txtBeneficioXPlanta = 0
+    End If
+    If superficie <> 0 Then
+      Me.txtKgBrutosXM2 = CDbl(kgBrutos) / CDbl(superficie)
+      Me.txtKgNetosXM2 = CDbl(kgNetos) / CDbl(superficie)
+      Me.txtGastoXM2 = CDbl(totalGastos) / CDbl(superficie)
+      Me.txtVentasXM2 = CDbl(totalVentas) / CDbl(superficie)
+      Me.txtBeneficioXM2 = CDbl(totalBeneficio) / CDbl(superficie)
+    Else
+      Me.txtKgBrutosXM2 = 0
+      Me.txtKgNetosXM2 = 0
+      Me.txtGastoXM2 = 0
+      Me.txtVentasXM2 = 0
+      Me.txtBeneficioXM2 = 0
+    End If
+    If kgNetos <> 0 Then
+      Me.txtGastoXKgNeto = CDbl(totalGastos) / CDbl(kgNetos)
+      Me.txtVentasXKgNeto = CDbl(totalVentas) / CDbl(kgNetos)
+      Me.txtBeneficioXKgNeto = CDbl(totalBeneficio) / CDbl(kgNetos)
+    Else
+      Me.txtGastoXKgNeto = 0
+      Me.txtVentasXKgNeto = 0
+      Me.txtBeneficioXKgNeto = 0
+    End If
+    If kgBrutos <> 0 Then
+      Me.txtGastoXKgBruto = CDbl(totalGastos) / CDbl(kgBrutos)
+      Me.txtVentasXKgBruto = CDbl(totalVentas) / CDbl(kgBrutos)
+      Me.txtBeneficioXKgBruto = CDbl(totalBeneficio) / CDbl(kgBrutos)
+    Else
+      Me.txtGastoXKgBruto = 0
+      Me.txtVentasXKgBruto = 0
+      Me.txtBeneficioXKgBruto = 0
+    End If
+  End If
+End Sub

@@ -1,0 +1,16 @@
+Private Sub Form_Current()
+  'si ya hay artículos metidos para este almacén, no se debe permitir
+  'cambiarle el tipo
+  If Form_AB_Almacen_ArticulosSub.CurrentRecord = 0 Then
+    Me.idTipoArticulo.Enabled = True
+  Else
+    Me.idTipoArticulo.Enabled = False
+    If ModuloAB_Almacen.TipoDeGastoInmediato(Me.idTipoArticulo) Then
+      Form_AB_Almacen_ArticulosSub.cmdGastar.Enabled = False
+      Form_AB_Almacen_ArticulosSub.cmdPonerA0.Enabled = False
+    Else
+      Form_AB_Almacen_ArticulosSub.cmdGastar.Enabled = True
+      Form_AB_Almacen_ArticulosSub.cmdPonerA0.Enabled = True
+    End If
+  End If
+End Sub
