@@ -87,9 +87,24 @@ def modificar2():
 #               ------------METODOS PARA BORRAR REGISTROS---------
 
 def borrar1():
-    Usuario.delete_instance() # esta forma de borrar borra el resitro atraves de la instancia crada al realizar una busqueda
+    userbuscado = Usuario.get(Usuario.id == 5) #metodo de busqueda
+    userbuscado.delete_instance() # esta forma de borrar borra el resitro atraves de la instancia crada al realizar una busqueda
        
 def borrar2():
     registro_borrar =Usuario.delete().where(Usuario.id == 2)
     registro_borrar.execute()
-    
+ 
+ #               -----------METODOS PARA OBTENER REGISTROS-------------
+
+def obtener_registros():
+   userbuscado = Usuario.get(Usuario.id == 5) #metodo de busqueda
+        print(userbuscado)
+
+def obtener_registros2():
+    listaDeRegistros = Usuario.select() #este metodo devuelve un lista iterable con los registos que contiene la BDD
+    for registro in listaDeRegistros:
+        print(registro)
+
+
+def obtener_registros3():
+
