@@ -97,8 +97,8 @@ def borrar2():
  #               -----------METODOS PARA OBTENER REGISTROS-------------
 
 def obtener_registros():
-   userbuscado = Usuario.get(Usuario.id == 5) #metodo de busqueda
-        print(userbuscado)
+    userbuscado = Usuario.get(Usuario.id == 5) #metodo de busqueda
+    print(userbuscado)
 
 def obtener_registros2():
     listaDeRegistros = Usuario.select() #este metodo devuelve un lista iterable con los registos que contiene la BDD
@@ -107,4 +107,11 @@ def obtener_registros2():
 
 
 def obtener_registros3():
+    listaDeRegistros = Usuario.select().where(Usuario.id>3) #al metodo select se les puede anidar otros metodos,por ejemplo el where
+    for registro in listaDeRegistros:
+        print(registro)
 
+def obtener_registros4():
+    listaDeRegistros = Usuario.select().where(Usuario.id>3) #al metodo select se les puede anidar otros metodos,por ejemplo el where
+    for registro in listaDeRegistros:
+        print(registro)
