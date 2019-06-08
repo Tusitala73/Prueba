@@ -1,13 +1,14 @@
 import sys
-from PrimeraAplicacion import *
+from Primera import *
 
-class MiFormulario(QtGui.QDialog):
-    QtGui.QWidget.__init__(self, parent)
-    self.ui = ui_Dialog()
-    self.ui.setupUi(self)
+class MiFormulario(QtWidgets.QDialog):
+    def __init__(self):        
+        super().__init__()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
 
 if __name__ == '__main__':
-    app = QtGui.Qappilcation(sys.argv)
+    app = QtWidgets.QApplication([])
     myapp = MiFormulario()
     myapp.show()
     sys.exit(app.exec_())
