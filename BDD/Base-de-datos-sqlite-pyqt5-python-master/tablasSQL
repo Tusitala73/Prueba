@@ -1,0 +1,14 @@
+CREATE TABLE zona(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    zona_nombre TEXT NOT NULL UNIQUE
+
+);
+
+CREATE TABLE invernadero(
+    ID  INTEGER  AUTO_INCREMENT PRIMARY KEY,
+    zona_nombre TEXT NOT NULL,
+    invernadero_nombre TEXT NOT NULL UNIQUE,
+    metros_invernadero INTEGER,
+    FOREING KEY (zona_nombre) REFERENCES zona(zona_nombre) ON DELETE CASCADE ON UPDATE CASCADE
+
+);
