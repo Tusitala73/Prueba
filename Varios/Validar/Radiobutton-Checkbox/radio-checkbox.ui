@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>265</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>20</y>
+     <width>181</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Lenguaje de Programación</string>
+   </property>
+   <widget class="QRadioButton" name="python">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>26</y>
+      <width>52</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Python</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="php">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>42</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PHP</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="perl">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>30</y>
+      <width>41</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Perl</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="Ruby">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>70</y>
+      <width>48</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ruby</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QCheckBox" name="checkBox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>160</y>
+     <width>131</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Aceptar los terminos</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="boton">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>200</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Aceptar</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
